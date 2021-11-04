@@ -11,12 +11,14 @@
       repo: deb https://pkg.jenkins.io/debian-stable binary/
       state: present
 
-  - name: Run the equivalent of "apt-get update" as a separate step
-    apt:
-     update_cache: yes
 
   - name: Install a openJdk
     apt:
+      update_cache: yes
       pkg:
+      - openjdk-8-jdk
       - jenkins
 
+  # - name: Run the equivalent of "apt-get update" as a separate step
+  #   apt:
+  #    update_cache: yes

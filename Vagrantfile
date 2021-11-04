@@ -10,14 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder "data", "/vagrant"
   config.vm.provision "shell", path: "setup.sh"
   config.vm.network "forwarded_port", guest: 8080, host: 8080
-#   config.vm.provision "shell", inline: <<-SHELL
-  #  apt-get update
-  #  apt-get install -y git
-  #  sudo apt install -y nodejs
-  #  sudo apt install -y npm
-  #  sudo apt install -y python3-pip
-#    pip install ansible,
-#  SHELL
+
 
 end
 # Vagrant.configure("2") do |config|
