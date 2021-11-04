@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: Add Jenkins repo key
+    ansible.builtin.apt_key:
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+      state: present
+  - name: Add specified repository into sources list
+    ansible.builtin.apt_repository:
+      repo: deb https://pkg.jenkins.io/debian-stable binary/
+      state: present
+
+  - name: Run the equivalent of "apt-get update" as a separate step
+    apt:
+     update_cache: yes
+
+  - name: Install a openJdk
+    apt:
+      pkg:
+      - jenkins
+
